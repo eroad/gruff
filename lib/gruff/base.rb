@@ -120,7 +120,7 @@ module Gruff
 
     # Same as font but for the title.
     attr_accessor :title_font
-    
+
     # Specifies whether to draw the title bolded or not.
     attr_accessor :bold_title
 
@@ -200,6 +200,10 @@ module Gruff
     # Output the values for the bars on a bar graph
     # Default is false
     attr_accessor :show_labels_for_bar_values
+
+    # Output the values for the bars on a bar graph
+    # Default is false
+    attr_accessor :show_labels_for_line_values
 
     # Set the number output format for labels using sprintf
     # Default is "%.2f"
@@ -517,6 +521,8 @@ module Gruff
           end
           if @show_labels_for_bar_values
             @norm_data << [data_row[DATA_LABEL_INDEX], norm_data_points, data_row[DATA_COLOR_INDEX], data_row[DATA_VALUES_INDEX]]
+          elsif @show_labels_for_line_values
+            @norm_data << [data_row[DATA_LABEL_INDEX], norm_data_points, data_row[DATA_COLOR_INDEX], nil, data_row[DATA_VALUES_INDEX]]
           else
             @norm_data << [data_row[DATA_LABEL_INDEX], norm_data_points, data_row[DATA_COLOR_INDEX]]
           end
